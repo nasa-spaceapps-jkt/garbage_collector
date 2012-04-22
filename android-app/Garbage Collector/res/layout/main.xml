@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal|left"
+    android:orientation="vertical" >
+
+	<LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"	    
+	    android:gravity="top"
+	    android:orientation="horizontal">
+
+	    <ImageView
+	        android:id="@+id/imageView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/world" />
+	
+	    <org.nasa.openspace.gc.util.TextViewSegoeUI
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:text="Garbage Collector"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+    
+	<!-- 1 row  -->
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"	    	    
+	    android:orientation="vertical" >	    
+    	
+	    <!-- 1 column  -->
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#0099CC"		    
+		    android:layout_marginTop="10dp"
+		    android:id="@+id/takePicture"
+		    android:padding="20dp"		    
+		    android:layout_marginRight="50dp"		    
+		    android:layout_weight="0.5"
+		    android:orientation="horizontal" >
+	
+		    <ImageView
+		        android:id="@+id/imageView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/camera_light" />
+		
+		    <org.nasa.openspace.gc.util.TextViewSegoeUI
+		        android:id="@+id/textView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:text="Take from Camera"
+		        android:textColor="#fff"
+		        android:textSize="20dp"
+		         />
+	
+	    </LinearLayout>
+	    
+		<!-- 1 column  -->
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#0099CC"
+		    android:id="@+id/chooseGallery"		    
+		    android:padding="20dp"
+		    android:layout_marginRight="50dp"	    
+		    android:layout_marginTop="5dp"
+		    android:orientation="horizontal" >
+	
+		    <ImageView
+		        android:id="@+id/imageView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/gallery_light" />
+		
+		    <org.nasa.openspace.gc.util.TextViewSegoeUI
+		        android:id="@+id/textView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:text="Choose from Gallery"
+		        android:textColor="#fff"
+		        android:textSize="20dp"
+		         />
+	
+	    </LinearLayout>
+	    
+		<!-- 1 column  -->
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FF8800"		    
+		    android:padding="20dp"	
+		    android:id="@+id/search"
+		    android:layout_marginRight="50dp"	    
+		    android:layout_marginTop="5dp"
+		    android:orientation="horizontal" >
+	
+		    <ImageView
+		        android:id="@+id/imageView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/search_light" />
+		
+		    <org.nasa.openspace.gc.util.TextViewSegoeUI
+		        android:id="@+id/textView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:textColor="#fff"
+		        android:textSize="20dp"
+		        android:text="Search"/>
+	
+	    </LinearLayout>
+    </LinearLayout>
+
+	<LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="wrap_content"	    
+	    android:layout_height="wrap_content"
+	    android:gravity="center|center_horizontal"
+	    android:orientation="horizontal" >
+		
+		<ImageView
+		    android:id="@+id/imageView2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/sac_logo" />
+
+    </LinearLayout>
+
+	
+
+</LinearLayout>

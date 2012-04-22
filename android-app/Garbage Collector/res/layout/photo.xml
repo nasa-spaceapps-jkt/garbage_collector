@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+   <LinearLayout 
+   android:orientation="horizontal"
+   android:layout_height="wrap_content"
+   android:layout_width="match_parent"
+   >
+   <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/world" />
+
+        <org.nasa.openspace.gc.util.TextViewSegoeUI
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Upload Picture"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
+    <Button android:text="@string/btnIntend" android:id="@+id/btnIntend"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"  
+        android:visibility="gone"     
+        android:layout_weight="1" />
+    <Button android:text="Take Picture" android:id="@+id/btnIntendS"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:visibility="gone"
+        android:layout_weight="1" />
+  </LinearLayout>
+	
+   <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:orientation="vertical">
+	    <ImageView 
+		      android:layout_height="wrap_content" 
+		      android:layout_width="wrap_content" 
+		      android:visibility="visible"
+		      android:src="@drawable/nasa_logo"    
+		      android:layout_margin="5dp"  
+		      android:id="@+id/imageView1" />
+	    <LinearLayout
+	        xmlns:android="http://schemas.android.com/apk/res/android"
+	        android:layout_width="match_parent"
+	        android:layout_height="fill_parent" 
+	        android:layout_margin="5dp"
+	        android:orientation="vertical">
+	        
+		   <EditText
+		       android:id="@+id/etName"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:hint="Input Name"
+		       android:inputType="textPersonName"
+		       android:padding="5dp" />
+		
+		   <EditText
+		       android:id="@+id/etKeterangan"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:hint="Input Caption"
+		       android:padding="5dp"
+		       android:inputType="textPersonName" />
+		   </LinearLayout>
+		   <Button
+		      android:id="@+id/btnUpload"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_margin="5dp"
+		      android:gravity="center_horizontal"
+		      android:background="#0099CC"
+		      android:textColor="#fff"
+		      android:padding="10dp"
+		      android:text="Upload" />
+		</LinearLayout>
+ 
+  <VideoView 
+      android:layout_height="wrap_content" 
+      android:layout_width="wrap_content" 
+      android:visibility="gone"
+      android:id="@+id/videoView1" />
+
+  
+
+</LinearLayout>

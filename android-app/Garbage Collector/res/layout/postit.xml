@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText        
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input Your Name"
+        android:id="@+id/loc"
+        android:inputType="textPersonName" />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/world" />
+
+        <org.nasa.openspace.gc.util.TextViewSegoeUI
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Upload Picture"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input Your Name"
+        android:inputType="textPersonName" >
+		
+        <requestFocus />
+    </EditText>
+    <EditText
+        android:id="@+id/etKeterangan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input Your Name"
+        android:inputType="textPersonName" >
+		
+        <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload" />
+
+</LinearLayout>
