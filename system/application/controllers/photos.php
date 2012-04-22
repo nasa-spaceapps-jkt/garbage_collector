@@ -21,6 +21,13 @@ class Photos extends Controller {
     $data = array();
 
     $data['photos'] = $this->photo_model->get_photos(array(
+      'completed' => FALSE,
+      'sort' => 'most_vote',
+      'lokasi' => $this->user_model->get_city()
+    ));
+
+    $data['photos_resolved'] = $this->photo_model->get_photos(array(
+      'completed' => TRUE,
       'sort' => 'most_vote',
       'lokasi' => $this->user_model->get_city()
     ));
@@ -55,8 +62,8 @@ class Photos extends Controller {
       'lokasi'        => '',
       'status'        => '0', // un-resolved
       'vote'          => '0', // vote 0
-      'lat'           => $_POST['lat'], // latitude
-      'long'          => $_POST['lon'] // longitude
+      'lat'           => trim($_POST['lat']), // latitude
+      'long'          => trim($_POST['lon']) // longitude
     );
 
     $id = $this->input->post('id');
@@ -66,6 +73,8 @@ class Photos extends Controller {
     }
 
     $binFile = $_FILES['gambar']['tmp_name'];
+    log_message('error', 'gambar tmp_name is: '.$binFile);
+    log_message('error', print_r($_FILES, TRUE));
     /*
     if (isset($binFile) && $binFile != "none") {
       $record['gambar'] = (fread(fopen($binFile, "r"), filesize($binFile)));
@@ -86,6 +95,9 @@ class Photos extends Controller {
     $get_city = TRUE;
     $location = $this->location_model->where_is($record['lat'], $record['long'], $get_city);
     $record['lokasi'] = ($location) ? $location.'' : '';
+
+    log_message('error', 'querying with lat: '.$record['lat'].' and long: '.$record['long']);
+    log_message('error', 'lokasi: '.$record['lokasi']);
 
     $ins = $this->db->insert('garbage', $record);
 

@@ -16,6 +16,13 @@
           <div class="caption">
             <?php echo auto_typography($photo->keterangan); ?>
             <p>Posted: <?=get_relative_time($photo->tanggal.' 00:00:00');?> by <strong><?=htmlspecialchars($photo->nama)?></strong></p>
+
+            <p>
+              <a target="_blank" href="https://twitter.com/share" class="twitter-share-button" data-lang="en"><span class="icon-twitter-sign"></span> Tweet</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+               | 
+               <a target="_blank" href="https://facebook.com/sharer.php?u=<?=current_url()?>"><span class="icon-facebook-sign"></span> Share</a>
+            </p>
           </div>
         </div>
       </div>
@@ -40,15 +47,22 @@
 
           <?php if($this->user_model->is_logged_in()): ?>
           <!-- form if logged in as authority -->
-          <?php $resolve_opposite = $photo->status === 1 ? '0' : '1'; ?>
+          <?php $resolve_opposite = $photo->status == 1 ? ' checked="checked" ' : ''; ?>
           <p>Editing a response as: <strong>Clean Jakarta Society (LSM Jakarta Bersih)</strong></p>
           <form method="post" action="<?=site_url('photos/edit_response/'.$photo->id)?>">
             <textarea name="response-edit" class="input-xlarge"><?=htmlspecialchars($photo->response)?></textarea>
             <input type="submit" class="btn btn-large btn-primary" value="Save" />
             <br>
-            <label style="display: inline; " for="response-resolve">Mark as resolved: </label>
-            <input style="display: inline; " type="checkbox" name="response-resolve" id="response-resolve" value="<?=$resolve_opposite?>" />
+            <label style="display: inline; " for="response-resolve">Resolved: </label>
+            <input style="display: inline; " <?=$resolve_opposite?> type="checkbox" name="response-resolve" id="response-resolve" value="1" />
           </form>
+          <?php endif; ?>
+        </div>
+        <div id="wmcc" class="well">
+          <?php if($photo->lat !== NULL && $photo->long !== NULL): ?>
+          <div id="mapCanvasContainer" lat="<?=$photo->lat?>" long="<?=$photo->long?>">
+            
+          </div>
           <?php endif; ?>
         </div>
         <?php if($this->user_model->is_logged_in()): ?>
@@ -74,7 +88,7 @@
             <input type="hidden" name="lon" value="<?=$photo->long?>" />
             <input type="hidden" name="nama" value="<?=htmlspecialchars($photo->nama)?>" />
             <input type="hidden" name="keterangan" value="<?=htmlspecialchars($photo->keterangan)?>" />
-            <label for="my-gambar">Image (max 2MB): </label><input id="my-gambar" type="file" name="gambar" />
+            <label for="my-gambar">Image showing resolved issue (max 2MB): </label><input id="my-gambar" type="file" name="gambar" />
             <input type="submit" name="submit" class="btn btn-primary " value="Upload" />
           </form>
         </div>
@@ -99,25 +113,27 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-  function makeGMap() {
-    var s = document.querySelector('#status');
-    
-    if (s.className == 'success') {
+  (function makeGMap() {
+    var s = $('#mapCanvasContainer');
+
+    if (s.length === 0) {
+      $('#wmcc').hide();
+    }
+    if (s.hasClass('success')) {
       // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
       return;
     }
     
-    s.innerHTML = "found you!";
-    s.className = 'success';
+    s.addClass('success');
     
-    var mapcanvas = document.createElement('div');
-    mapcanvas.id = 'mapcanvas';
-    mapcanvas.style.height = '400px';
-    mapcanvas.style.width = '560px';
-      
-    document.querySelector('article').appendChild(mapcanvas);
+    var mapcanvas = $('<div>');
+    mapcanvas.attr('id', 'mapcanvas');
+    mapcanvas.css('height', '300px');
+    mapcanvas.css('width', '400px');
+
+    s.append(mapcanvas);
     
-    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var latlng = new google.maps.LatLng(s.attr('lat'), s.attr('long'));
     var myOptions = {
       zoom: 15,
       center: latlng,
@@ -130,9 +146,9 @@ $(document).ready(function(){
     var marker = new google.maps.Marker({
         position: latlng, 
         map: map, 
-        title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+        title:"You are here! "
     });
-  }
+  }());
 
   $('a.vote').click(function(e){
     var that = this;

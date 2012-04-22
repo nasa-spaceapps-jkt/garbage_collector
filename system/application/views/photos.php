@@ -33,7 +33,32 @@
                     <?php echo word_limiter(htmlspecialchars(strip_tags($photo->keterangan)), 10); ?>
                   </p>
                     <p><span class="icon-user"></span> <?php echo $photo->vote; ?></p>
-                  <p><a href="<?=site_url('photos/view/'.$photo->id)?>" class="goto-step btn btn-large">View</a></p>
+                  <p>
+                    <a href="<?=site_url('photos/view/'.$photo->id)?>" class="goto-step btn btn-large">View</a>
+                    <?php if($photo->status == 1): ?>
+                    <span style="color: green;" class="icon-ok"></span> <span style="color:green;">Resolved!</span>
+                    <?php endif; ?>
+                  </p>
+                </div>
+              </div>
+            </li>
+          <?php endforeach; endif; ?>
+
+          <?php if($photos_resolved): foreach($photos_resolved as $photo): ?>
+            <li class="span3">
+              <div class="thumbnail" >
+                <img  style="width: 260px; height: 180px; overflow:hidden;" src="<?=site_url('util/img/'.$photo->id); ?>" alt="" />
+                <div class="caption">
+                  <p>
+                    <?php echo word_limiter(htmlspecialchars(strip_tags($photo->keterangan)), 10); ?>
+                  </p>
+                    <p><span class="icon-user"></span> <?php echo $photo->vote; ?></p>
+                  <p>
+                    <a href="<?=site_url('photos/view/'.$photo->id)?>" class="goto-step btn btn-large">View</a>
+                    <?php if($photo->status == 1): ?>
+                    <span style="color: green;" class="icon-ok"></span> <span style="color:green;">Resolved!</span>
+                    <?php endif; ?>
+                  </p>
                 </div>
               </div>
             </li>

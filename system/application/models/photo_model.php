@@ -20,6 +20,7 @@ class Photo_model extends Model {
     $this->db->select('lat');
     $this->db->select('long');
     $this->db->select('response');
+    $this->db->select('gambar_resolve');
 
     if(isset($opt['id']))
     {
@@ -30,6 +31,18 @@ class Photo_model extends Model {
     if(isset($opt['lokasi']))
     {
       $this->db->like('lokasi', $opt['lokasi']);
+    }
+
+    if(isset($opt['completed']))
+    {
+      if($opt['completed'] === TRUE)
+      {
+        $this->db->where('status', 1);
+      }
+      else
+      {
+        $this->db->where('status', 0);
+      }
     }
 
     if(isset($opt['sort']))
