@@ -8,7 +8,7 @@
   <div class="row">
     <div class="span8">
       <form method="post" action="<?=site_url('photos')?>" id="form-choose-city" class="" style="">
-        <p><input id="my-city" name="city" type="text" class="input-xlarge" /></p>
+        <p><input id="my-city" name="city" type="text" class="input-xlarge" /><span id="guess-right" style="display:none;opacity: 0.6;font-size: smaller;"> (did I guess that right?)</span></p>
         <p><input type="submit" class="btn btn-large btn-primary" value="See Environmental Degradation &raquo;" /></p>
         <!--<p><a href="#add-photos" class="goto-step btn btn-large btn-primary">Go</a></p>-->
       </form>
@@ -34,6 +34,7 @@ $(document).ready(function(){
         if (resJSON && resJSON.resultset.error == 0) {
           city = resJSON.resultset.result.state;
           $('input#my-city').val(city);
+          $('#guess-right').fadeIn();
         }
       },
       error: function () {
